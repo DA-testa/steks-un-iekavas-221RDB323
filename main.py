@@ -1,3 +1,4 @@
+# Danila Sinicins
 # python3
 
 from collections import namedtuple
@@ -21,14 +22,26 @@ def find_mismatch(text):
             opening_brackets_stack.pop()
         if opening_brackets_stack:
             return opening_brackets_stack[0].position
-        return "Success"
+    return "Success"
 
 
 def main():
-    text = input()
-    mismatch = find_mismatch(text)
-    # Printing answer, write your code here
-    print(mismatch)
+    input_type =input("I/F: ")
+    if "I" in input_type:
+        text=input()
+        mismatch=find_mismatch(text)
+        print(mismatch)
+    elif "F" in input_type:
+        for i in range(6):
+            with open(f"test/{i}") as file:
+                text=file.read()
+                mismatch=find_mismatch(text)
+                print(mismatch)
+
+    else:
+        print("wrong input")
+        
+    
 
 if __name__ == "__main__":
     main()
